@@ -3,6 +3,7 @@ package guru.springframework.msscbeerservice.web.controller;
 import guru.springframework.msscbeerservice.services.BeerService;
 import guru.springframework.msscbeerservice.web.model.BeerDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -18,24 +19,17 @@ public class BeerController {
 
     @GetMapping("/{beerId}")
     public ResponseEntity<BeerDto> getBeerById(@PathVariable("beerId") UUID beerId) {
-
-        BeerDto beerDto = beerService.getById(beerId);
-        return null;
+        return new ResponseEntity<>(beerService.getById(beerId), HttpStatus.OK);
     }
 
     @PostMapping()
     public ResponseEntity saveNewBeer(@RequestBody @Validated BeerDto beerDto) {
-
-        beerDto = beerService.saveNewBeer(beerDto);
-        return null;
+       return new ResponseEntity(beerService.saveNewBeer(beerDto), HttpStatus.CREATED);
     }
 
     @PutMapping("/{beerId}")
     public ResponseEntity updateBeerById(@PathVariable("beerId") UUID beerId, @RequestBody BeerDto beerDto) {
-
-        beerDto = beerService.updateBeer(beerId, beerDto);
-        return null;
+        return new ResponseEntity(beerService.updateBeer(beerId, beerDto), HttpStatus.NO_CONTENT);
     }
-
 
 }
