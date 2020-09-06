@@ -1,8 +1,8 @@
 package guru.springframework.msscbeerservice.bootstrap;
 
+import guru.sfg.brewery.model.BeerStyleEnum;
 import guru.springframework.msscbeerservice.domain.Beer;
 import guru.springframework.msscbeerservice.repositories.BeerRepository;
-import guru.springframework.msscbeerservice.web.model.BeerStyleEnum;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -25,9 +25,9 @@ public class BeerLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-          if(beerRepository.count() == 0 ) {
-              loadBeerObjects();
-          }
+        if(beerRepository.count() == 0 ) {
+            loadBeerObjects();
+        }
     }
 
     private void loadBeerObjects() {
